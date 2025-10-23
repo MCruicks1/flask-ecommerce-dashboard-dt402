@@ -1,0 +1,101 @@
+/*
+dashboard_stylesheet.css
+------------------------
+Author: Martin Cruickshank
+Date: October 2025
+Module: DT402 – Developing Data Projects (Corndel Apprenticeship)
+
+Description:
+This stylesheet defines the visual presentation and layout for the Flask-based E-Commerce Data Dashboard.
+It provides responsive styling for the page structure, charts, header and footer. 
+The CSS follows a modular approach, supporting both full-width and side-by-side (half-width) chart displays. 
+Comments throughout the file explain styling decisions and adjustments made for usability and responsiveness.
+*/
+
+/* -------------------------------- */
+/* ==== General Page Styling ==== */
+body {
+  font-family: Arial, sans-serif; /* Simple, clean font for readability */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light grey background to contrast content area */
+}
+
+.container {
+  width: 100%;
+  padding: 0;
+  background-color: #fff; /* White background for content area */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* -------------------------------- */
+/* ==== Header / Title Styling ==== */
+.dashboard-title {
+  text-align: center; /* Center align the title */
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  background-color: #333; /* Dark background for header contrast */
+  color: #fff; /* White text for readability */
+}
+
+/* -------------------------------- */
+/* ==== Chart Layout Container Styling ==== */
+/* -------------------------------- */
+
+.chart-container { /* General chart container styling */
+  padding: 0; /* Changed from 20px to 0px for the side by side visuals alignment, initially wasn't working as expected */
+}
+
+.full-width { 
+  width: 100%; /* Full width for single charts */
+}
+
+.half-width {
+  width: 50%; /* Half width to enable side-by-side charts */
+  float: left; /* float instructs the element to align left, allowing another half-width element to sit beside it */
+  box-sizing: border-box; /* Ensures padding and border are included in the width calculation */
+  padding: 20px; /* Padding for spacing around charts */
+}
+
+/* -------------------------------- */
+/* ==== Chart Specific Styling ==== */
+/* -------------------------------- */
+
+/* Adjusting the size of the pie chart */
+#categoryPopularityChart, /* Targeting specific pie chart IDs */
+#paymentMethodsChart { /* Targeting specific pie chart IDs */
+  height: 250px; /* Set height for pie charts */
+}
+
+/* Adjusting the size of the bar charts */
+#ordersChart,
+#revenueChart {
+  height: 300px; /* Set height for bar charts note, larger than other charts to show more detail */
+}
+
+/* Adjusting the size of the line and other charts */
+#popularProductsChart,
+#stockChart {
+  height: 250px;
+}
+
+/* -------------------------------- */
+/* Clearfix for chart rows to handle floating elements */
+/* ensures floating elements (half-width) stay within their container */
+.chart-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* -------------------------------- */
+/* Copyright notice (Footer) */
+/* -------------------------------- */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  background-color: #333; /* Matches header for visual consistency */
+  color: #fff;
+}

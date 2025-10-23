@@ -1,0 +1,91 @@
+<!--
+dashboard.html
+-----------------------------------------
+Author: Martin Cruickshank
+Date: October 2025
+Module: DT402 – Developing Data Projects (Corndel Apprenticeship)
+
+Description:
+This HTML file defines the structure for the Flask-based E-Commerce Data Dashboard.
+It uses a clean, responsive layout styled with CSS and Bootstrap, displaying data 
+visualisations rendered by Chart.js
+-->
+
+<!DOCTYPE html> <!-- Declaration of HTML5 document type -->
+<html lang="en"> <!-- Language set to English -->
+<head> 
+  <meta charset="UTF-8" /> <!-- Character encoding set to UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!--content scales to device width for responsiveness -->
+  <title>Martin’s Data Dashboard</title> <!-- Title of the dashboard page -->
+
+  <!-- CSS - Dashboard Stylesheet, styles the dashboard layout and elements -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_stylesheet.css') }}">
+
+  <!-- (Optional) Bootstrap CSS for responsive layout and styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- chart.js library for rendering charts, functionality to visualise data -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Date adapter for Chart.js to handle date/time data -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script> <!-- Date-fns library for date manipulation -->
+</head>
+
+<!-- *--------------------------------* -->
+<!-- Body of the dashboard containing header, charts, and footer -->
+<body> 
+
+  <header> <!-- Defines the start of the header section -->
+    <div class="dashboard-title">Martin’s Data Dashboard</div> <!-- Dashboard title as displayed on the page -->
+  </header> <!-- Ends the header section -->
+
+  <!-- *--------------------------------* -->
+  <!-- New container - This is the main content area for all charts -->
+  <div class="container"> 
+
+  <!-- *--------------------------------* -->
+  <!-- Chart 1 - Orders Over Time chart (full width) -->
+  <section class="chart-row"> <!-- Chart row for Orders Over Time -->
+    <div class="chart-container full-width"> <!-- full-width chart container -->
+      <h2>Orders Over Time</h2> <!-- Chart title -->
+      <canvas id="ordersChart"></canvas> <!-- Canvas element for rendering the Orders Over Time chart -->
+    </div>  <!-- End of Orders Over Time chart container -->
+  </section> <!-- End of Chart 1 section -->
+
+  <!-- *--------------------------------* -->
+  <!-- Chart 2 - Low Stock Levels chart (half width) -->
+  <section class="chart-row"> 
+    <div class="chart-container half-width"> <!-- half-width chart container -->
+      <h2>Low Stock Levels</h2> <!-- Chart title -->
+      <canvas id="stockChart"></canvas> 
+    </div> 
+    <!-- Chart 3 - Most Popular Products chart (half width) -->
+    <div class="chart-container half-width">
+      <h2>Most Popular Products</h2>
+      <canvas id="popularProductsChart"></canvas>
+    </div>
+  </section>
+
+  <!-- *--------------------------------* -->
+  <!-- Chart 3 - Temperature Over Time chart (full width) -->
+<section class="chart-row">
+  <div class="chart-container full-width">
+    <h2>Temperature Over Time</h2>
+    <canvas id="temperatureChart"></canvas>
+  </div>
+</section>
+
+<!-- *--------------------------------* -->
+ <!-- Footer to show copyright / ownership information -->
+  <div class="footer">© 2025 Clarion BI & Data Analytics</div> 
+</div>
+
+<!-- *--------------------------------* -->
+  <!-- JavaScript - Dashboard Script - contains the logic for rendering charts and handling data -->
+  <script src="{{ url_for('static', filename='dashboard-script.js') }}"></script>
+
+</body> <!-- End of body of the dashboard -->
+
+</html> 
+
+<!-- 
+*End of dashboard.html file*
+-->
