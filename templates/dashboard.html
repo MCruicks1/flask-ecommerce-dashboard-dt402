@@ -18,13 +18,13 @@ visualisations rendered by Chart.js
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!--content scales to device width for responsiveness -->
   <title>Martin’s Data Dashboard</title> <!-- Title of the dashboard page -->
 
-  <!-- CSS - Dashboard Stylesheet, styles the dashboard layout and elements -->
+<!-- CSS - Dashboard Stylesheet, styles the dashboard layout and elements -->
   <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_stylesheet.css') }}">
 
-  <!-- (Optional) Bootstrap CSS for responsive layout and styling -->
+<!-- (Optional) Bootstrap CSS for responsive layout and styling -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- chart.js library for rendering charts, functionality to visualise data -->
+<!-- chart.js library for rendering charts, functionality to visualise data -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Date adapter for Chart.js to handle date/time data -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script> <!-- Date-fns library for date manipulation -->
 </head>
@@ -37,12 +37,12 @@ visualisations rendered by Chart.js
     <div class="dashboard-title">Martin’s Data Dashboard</div> <!-- Dashboard title as displayed on the page -->
   </header> <!-- Ends the header section -->
 
-  <!-- *--------------------------------* -->
-  <!-- New container - This is the main content area for all charts -->
+<!-- *--------------------------------* -->
+<!-- New container - This is the main content area for all charts -->
   <div class="container"> 
 
-  <!-- *--------------------------------* -->
-  <!-- Chart 1 - Orders Over Time chart (full width) -->
+<!-- *--------------------------------* -->
+<!-- Chart 1 - Orders Over Time chart (full width) -->
   <section class="chart-row"> <!-- Chart row for Orders Over Time -->
     <div class="chart-container full-width"> <!-- full-width chart container -->
       <h2>Orders Over Time</h2> <!-- Chart title -->
@@ -50,8 +50,8 @@ visualisations rendered by Chart.js
     </div>  <!-- End of Orders Over Time chart container -->
   </section> <!-- End of Chart 1 section -->
 
-  <!-- *--------------------------------* -->
-  <!-- Chart 2 - Low Stock Levels chart (half width) -->
+<!-- *--------------------------------* -->
+<!-- Chart 2 - Low Stock Levels chart (half width) -->
   <section class="chart-row"> 
     <div class="chart-container half-width"> <!-- half-width chart container -->
       <h2>Low Stock Levels</h2> <!-- Chart title -->
@@ -64,8 +64,17 @@ visualisations rendered by Chart.js
     </div>
   </section>
 
-  <!-- *--------------------------------* -->
-  <!-- Chart 3 - Temperature Over Time chart (full width) -->
+<!-- *--------------------------------* -->
+<!-- Chart 3 - Payment Method Popularity chart (half width, centred) *ADDED MC 23/10/2025* -->
+<section class="chart-row">
+  <div class="chart-container half-width" style="float: none; margin: 0 auto;"> <!-- Centre the half-width chart -->
+    <h2>Payment Method Popularity</h2>
+    <canvas id="paymentMethodsChart"></canvas>
+  </div>
+</section>
+
+<!-- *--------------------------------* -->
+<!-- Chart 4 - Temperature Over Time chart (full width) *Changed to Chart 4 to accommodate new chart MC 23/10/2025* -->
 <section class="chart-row">
   <div class="chart-container full-width">
     <h2>Temperature Over Time</h2>
@@ -73,13 +82,14 @@ visualisations rendered by Chart.js
   </div>
 </section>
 
+
 <!-- *--------------------------------* -->
- <!-- Footer to show copyright / ownership information -->
+<!-- Footer to show copyright / ownership information -->
   <div class="footer">© 2025 Clarion BI & Data Analytics</div> 
 </div>
 
 <!-- *--------------------------------* -->
-  <!-- JavaScript - Dashboard Script - contains the logic for rendering charts and handling data -->
+<!-- JavaScript - Dashboard Script - contains the logic for rendering charts and handling data -->
   <script src="{{ url_for('static', filename='dashboard-script.js') }}"></script>
 
 </body> <!-- End of body of the dashboard -->

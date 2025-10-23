@@ -154,6 +154,26 @@ def most_popular_products() -> Response:
         abort(500, description="Error fetching most popular products")  
 
 #-----------------------------------------
+# API endpoint to get payment method popularity *ADDED MC 23/10/2025*
+@app.route("/api/payment_method_popularity")
+def payment_method_popularity() -> Response:
+    query = """
+    SELECT pm.method_name, COUNT(p.payment_id) AS transaction_count
+    FROM payments p
+    JOIN payment_methods pm ON p.method_id = pm.method_id
+    GROUP BY pm.method_name
+    ORDER BY transaction_count DESC;
+    """
+    try:
+        result = query_db(query)
+        methods = [row[0] for row in result]
+        counts = [row[1] for row in result]
+        return jsonify({"methods": methods, "counts": counts})
+    except Exception as e:
+        logging.error(f"Error fetching payment method popularity: %s", e)
+        abort(500, description="Error fetching payment method popularity")
+
+#-----------------------------------------
 # Run the Flask application
 if __name__ == "__main__":
     app.run(debug=True)

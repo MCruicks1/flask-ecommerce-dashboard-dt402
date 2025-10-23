@@ -62,10 +62,12 @@ body {
 /* ==== Chart Specific Styling ==== */
 /* -------------------------------- */
 
-/* Adjusting the size of the pie chart */
-#categoryPopularityChart, /* Targeting specific pie chart IDs */
-#paymentMethodsChart { /* Targeting specific pie chart IDs */
-  height: 250px; /* Set height for pie charts */
+/* Adjusting the size of pie and doughnut charts */
+#paymentMethodsChart {
+  height: 2000px;
+  width: 300px;
+  margin: 0 auto;  /* Centers the chart within its container */
+  display: block;  /* Ensures centering works correctly */
 }
 
 /* Adjusting the size of the bar charts */

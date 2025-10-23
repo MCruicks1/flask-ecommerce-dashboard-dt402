@@ -133,6 +133,39 @@ fetchDataAndRenderChart("/api/most_popular_products", "popularProductsChart", (d
 }));
 
 //---------------------------------------------------------
+// Payment Method Popularity (Pie Chart) *ADDED MC 23/10/2025*
+fetchDataAndRenderChart("/api/payment_method_popularity", "paymentMethodsChart", (data) => ({
+  type: "pie",
+  data: {
+    labels: data.methods,
+    datasets: [
+      {
+        label: "Transactions",
+        data: data.counts,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.6)",
+          "rgba(54, 162, 235, 0.6)",
+          "rgba(255, 206, 86, 0.6)",
+          "rgba(75, 192, 192, 0.6)",
+          "rgba(153, 102, 255, 0.6)",
+          "rgba(255, 159, 64, 0.6)"
+        ],
+        borderColor: "rgba(255, 255, 255, 1)",
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: "top" },
+      title: { display: false }
+    }
+  }
+}));
+
+
+//---------------------------------------------------------
 // Temperature Over Time (External API via Flask)
 fetchDataAndRenderChart("/api/temperature_over_time", "temperatureChart", (data) => ({
   type: "line", // Specify the type of chart: Line chart
