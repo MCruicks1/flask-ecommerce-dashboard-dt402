@@ -15,7 +15,9 @@ This approach reduces code repetition and enhances maintainability (DRY).
 
 //---------------------------------------------------------
 // Chart Rendering Logic - Reusable chart fetch/render helper
-async function fetchDataAndRenderChart(apiEndpoint, chartElementId, chartConfig) { // chartConfig: callback function that receives data and returns the Chart.js configuration & chartElementId: the id of the canvas element
+async function fetchDataAndRenderChart(apiEndpoint, chartElementId, chartConfig) { //...
+  // ...chartConfig: callback function that receives data and returns the Chart.js configuration
+  // ...chartElementId: the id of the canvas element
   try {
     let response = await fetch(apiEndpoint); // Fetch data from the given API endpoint
     let data = await response.json(); // Parse JSON response
@@ -28,7 +30,7 @@ async function fetchDataAndRenderChart(apiEndpoint, chartElementId, chartConfig)
 
 //---------------------------------------------------------
 // Chart definitions (using reusable function)
-// Orders Over Time
+// Orders Over Time (Line Chart)
 fetchDataAndRenderChart("/api/orders_over_time", "ordersChart", (data) => ({ // chartConfig function
   type: "line", // Specify the type of chart: Line chart
   data: {

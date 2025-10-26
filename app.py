@@ -67,26 +67,26 @@ SELECT MIN(order_date), MAX(order_date)
 FROM orders;
 """
     try:
-        result = query_db(query)
-        start_date, end_date = result[0]
+        result = query_db(query) # Execute the query
+        start_date, end_date = result[0] # Extract start and end dates
 
         # Making an API call to fetch temperature data
         API_ENDPOINT = "https://archive-api.open-meteo.com/v1/archive" # Open-Meteo Archive, API endpoint
         params = {
             "latitude": 50.6053,  # London UK
-            "longitude": -3.5952,
+            "longitude": -3.5952, # London UK
             "start_date": start_date,
             "end_date": end_date,
             "daily": "temperature_2m_max",
             "timezone": "GMT",
         }
-        response = requests.get(API_ENDPOINT, params=params)
-        response.raise_for_status()
+        response = requests.get(API_ENDPOINT, params=params) # This is the API call to Open-Meteo
+        response.raise_for_status() # Raise an error for bad responses
 
-        return jsonify(response.json())
-    except Exception as e:
-        logging.error("Error in /api/temperature_over_time: %s", e)
-        abort(500, description="Error fetching temperature data.")
+        return jsonify(response.json()) # Return the JSON response from the API
+    except Exception as e: # Catch any exceptions and log them
+        logging.error("Error in /api/temperature_over_time: %s", e) # Log the error
+        abort(500, description="Error fetching temperature data.") # Return a 500 error
 
 #-----------------------------------------
 # API endpoint to get orders over time
